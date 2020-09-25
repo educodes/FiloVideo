@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import HelloWolrd from './components/HelloWolrd.jsx'
+import App from './containers/App.jsx';
 
-ReactDOM.render(<HelloWolrd /> , document.getElementById('app'));
+ReactDOM.render(<App /> , document.getElementById('app'));
 

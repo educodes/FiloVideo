@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
@@ -11,48 +11,46 @@ const API = 'http://localhost:3000/initalState'
 
 const App = () => {
 
-  const [ videos , setVideos] = useState([]); 
+  const [videos, setVideos] = useState({ mylist: [], trends: [], originals: [] });
 
   useEffect(() => {
     fetch(API)
-    .then(response => response.json())
-    .then(data => setVideos(data));
+      .then(response => response.json())
+      .then(data => setVideos(data));
   }, [])
 
-  console.log(videos);
+  return (
+    <div className="App">
+      <Header />
+      <Search />
 
-  return(
-  <div className="App">
-    <Header/>
-    <Search/>
-    
-    <Categories title="Mi lista">
-     <Carousel>
-       <CarouselItem/>
-       <CarouselItem/>
-       <CarouselItem/>
-       <CarouselItem/>
-       <CarouselItem/>
-     </Carousel>
-    </Categories>
+      {videos.mylist.length > 0 &&
+        <Categories title="Mi lista">
+          <Carousel>
+            <CarouselItem />
+          </Carousel>
+        </Categories>
+      }
 
-    <Categories title="Tendencias">
-     <Carousel>
-       <CarouselItem/>
-       <CarouselItem/>
-       <CarouselItem/>
-     </Carousel>
-    </Categories>
+      <Categories title="Tendencias">
+        <Carousel>
+          {videos.trends.map(item => 
+          <CarouselItem key={item.id} {...item}/>
+            )}
+        </Carousel>
+      </Categories>
 
-    <Categories title="Originales de Filo Video">
-     <Carousel>
-       <CarouselItem/>
-       <CarouselItem/>
-     </Carousel>
-    </Categories>
+      <Categories title="Originales de Filo Video">
+        <Carousel>
+          {videos.originals.map(item =>
+            <CarouselItem key={item.id} {...item} />
+          )}
+        </Carousel>
+      </Categories>
 
-    <Footer/>
-  </div>
-)};
+      <Footer />
+    </div>
+  )
+};
 
 export default App

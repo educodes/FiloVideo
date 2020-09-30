@@ -13,10 +13,6 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
 
-  devServer:{
-    open: true
-  },
-
   module: {
     rules: [
       {
@@ -53,6 +49,12 @@ module.exports = {
       
     ],
   },
+
+  devServer: {
+    open: true,
+    historyApiFallback: true
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',

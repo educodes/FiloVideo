@@ -1,19 +1,25 @@
 const reducer = (state , action) => {
-  switch (action.type){
-    case 'SET_FAVORITE':
-      return{
+  switch (action.type) {
+    case "SET_FAVORITE":
+      return {
         ...state,
-        myList: [ ...state.myList, action.payload]
-      }
+        myList: [...state.myList, action.payload],
+      };
 
-    case 'DELETE_FAVORITE':
-      return{
+    case "DELETE_FAVORITE":
+      return {
         ...state,
-        myList: state.myList.filter(items => items.id !== action.payload)
-      }
+        myList: state.myList.filter((items) => items.id !== action.payload),
+      };
+
+    case "LOGIN_REQUEST":
+      return {
+        ...state,
+        user: action.payload,
+      };
 
     default:
-      return state; 
+      return state;
   }
 }
 

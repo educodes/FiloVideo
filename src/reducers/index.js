@@ -1,4 +1,4 @@
-const reducer = (state , action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case "SET_FAVORITE":
       return {
@@ -13,6 +13,12 @@ const reducer = (state , action) => {
       };
 
     case "LOGIN_REQUEST":
+      return {
+        ...state,
+        user: action.payload,
+      };
+
+    case "LOGOUT_REQUEST":
       return {
         ...state,
         user: action.payload,

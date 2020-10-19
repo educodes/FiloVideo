@@ -18,7 +18,7 @@ const Login = props => {
     })
   }
 
-  const handleSumit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
     props.loginRequest(form)
     props.history.push('/')
@@ -28,7 +28,7 @@ const Login = props => {
     <section className="login">
       <section className="login__container">
         <h2>Inicia sesión</h2>
-        <form className="login__container--form" onSubmit={handleSumit}>
+        <form className="login__container--form" onSubmit={handleSubmit}>
           <input
             name="email"
             className="input"

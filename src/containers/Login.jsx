@@ -6,6 +6,7 @@ import { loginRequest } from '../actions'
 import googleIcon from '../assets/static/google-icon.png'
 import twitterIcon from '../assets/static/twitter-icon.png'
 import '../assets/styles/components/Login.scss';
+import '../assets/styles/Media.scss';
 
 const Login = props => {
   const [form, setValues] = useState({
